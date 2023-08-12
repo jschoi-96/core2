@@ -4,7 +4,10 @@ import hello.core2.discount.DiscountPolicy;
 import hello.core2.discount.FixDiscountpolicy;
 import hello.core2.discount.RateDiscountPolicy;
 import hello.core2.member.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
@@ -16,6 +19,7 @@ public class OrderServiceImpl implements OrderService{
 
     private DiscountPolicy discountPolicy; // 인테페이스에만 의존한다!!
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
